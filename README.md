@@ -19,6 +19,6 @@ There is a special `token` parameter. When supplied, the invocation will only tr
 
 The token can be supplied as a:
 
-* Request parameter: `curl -vs http://localhost:8080/jenkins/generic-webhook-trigger/invoke?token=abc123 2>&1`
-* Token header: `curl -vs -H "token: abc123" http://localhost:8080/jenkins/generic-webhook-trigger/invoke 2>&1`
+* Request parameter: `curl -POST http://localhost:8080/jenkins/multibranch-webhook-trigger/invoke?token=my-token`
+* Token header: `curl -POST -H "token: my-token" http://localhost:8080/jenkins/multibranch-webhook-trigger/invoke`
 
