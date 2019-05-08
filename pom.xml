@@ -16,6 +16,7 @@
 		<violations.version>1.18</violations.version>
 	</properties>
 
+	<groupId>igalg.jenkins.plugins</groupId>
 	<artifactId>multibranch-scan-webhook-trigger</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Multibranch Scan Webhook Trigger</name>
