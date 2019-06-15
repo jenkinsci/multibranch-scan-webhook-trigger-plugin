@@ -4,7 +4,7 @@
 
 All multibranch projects comes with build in periodically scan trigger that polls scm and check wich branches has changed and than build those branches.
 
-This is a Jenkins plugin that add functionality to do thi scan on webhook:
+This is a Jenkins plugin that add functionality to do this scan on webhook:
 
  1. Receive any HTTP request, `JENKINS_URL/multibranch-webhook-trigger/invoke?token=TOKENHERE`
  2. Trigger a multibranch jobs scan that matches the token
