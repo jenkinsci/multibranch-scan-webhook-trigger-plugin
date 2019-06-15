@@ -25,13 +25,24 @@ package com.igalg.jenkins.plugins.mswt.locator;
 
 import java.util.List;
 
+import org.acegisecurity.context.SecurityContext;
+import org.acegisecurity.context.SecurityContextHolder;
+
 import com.cloudbees.hudson.plugins.folder.computed.ComputedFolder;
 
+import hudson.security.ACL;
 import jenkins.model.Jenkins;
 
 public class JenkinsInstanceComputedFolderLocator implements ComputedFolderLocator {
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "deprecation" })
 	public  List<ComputedFolder> getAllComputedFolders() {
-		return Jenkins.getInstance().getAllItems(ComputedFolder.class);
+		
+		SecurityContext orig = null;
+		try {
+			orig = ACL.impersonate(ACL.SYSTEM);
+			return Jenkins.getInstance().getAllItems(ComputedFolder.class);
+		}finally {
+			SecurityContextHolder.setContext(orig);
+		}
 	}
 }
