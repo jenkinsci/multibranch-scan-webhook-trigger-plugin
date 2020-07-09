@@ -23,6 +23,7 @@
  */
 package com.igalg.jenkins.plugins.mswt.trigger;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -61,7 +62,7 @@ public class ComputedFolderWebHookTrigger extends Trigger<ComputedFolder<?>> {
 
  
     public ComputedFolderWebHookTriggerResult trigger() {
-    	Queue.Item  queueItem = job.scheduleBuild2(0);
+    	Queue.Item  queueItem = Objects.requireNonNull(job).scheduleBuild2(0);
     	return new ComputedFolderWebHookTriggerResult(queueItem);
     }
     
