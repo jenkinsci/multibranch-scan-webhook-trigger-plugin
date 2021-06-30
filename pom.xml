@@ -20,7 +20,7 @@
 
 	<groupId>igalg.jenkins.plugins</groupId>
 	<artifactId>multibranch-scan-webhook-trigger</artifactId>
-	<version>1.0.7-SNAPSHOT</version>
+	<version>1.0.7</version>
 	<name>Multibranch Scan Webhook Trigger</name>
 	<description>Trigger that can receive any HTTP request and trigger a multibranch scan.</description>
 	
@@ -55,7 +55,7 @@
         <connection>scm:git:ssh://git@github.com/jenkinsci/multibranch-scan-webhook-trigger.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/multibranch-scan-webhook-trigger.git</developerConnection>
         <url>https://github.com/jenkinsci/multibranch-scan-webhook-trigger.git</url>
-      <tag>multibranch-scan-webhook-trigger-1.0.6</tag>
+      <tag>multibranch-scan-webhook-trigger-1.0.7</tag>
   </scm>
 
 	<repositories>
