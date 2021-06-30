@@ -61,6 +61,8 @@ public class ComputedFolderWebHookTrigger extends Trigger<ComputedFolder<?>> {
 
  
     public ComputedFolderWebHookTriggerResult trigger() {
+    	if(job == null)
+    		return null;
     	Queue.Item  queueItem = job.scheduleBuild2(0);
     	return new ComputedFolderWebHookTriggerResult(queueItem);
     }
