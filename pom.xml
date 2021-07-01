@@ -24,7 +24,7 @@
 	<name>Multibranch Scan Webhook Trigger</name>
 	<description>Trigger that can receive any HTTP request and trigger a multibranch scan.</description>
 	
-	<url>https://wiki.jenkins.io/display/JENKINS/Multibranch+Scan+Webhook+Trigger+Plugin</url>
+	<url>https://github.com/jenkinsci/multibranch-scan-webhook-trigger-plugin</url>
 	
 	<packaging>hpi</packaging>
 
