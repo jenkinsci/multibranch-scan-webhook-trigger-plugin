@@ -13,7 +13,7 @@
 		<!--  jenkins.version>2.222.4</jenkins.version>-->
 		<jenkins.version>2.263.1</jenkins.version>
         <scm-api.version>2.6.4</scm-api.version>
-        <git-plugin.version>4.5.2</git-plugin.version>
+        <git-plugin.version>4.11.4</git-plugin.version>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<violations.version>1.18</violations.version>
 	</properties>
