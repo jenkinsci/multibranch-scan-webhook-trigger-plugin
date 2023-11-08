@@ -220,7 +220,7 @@
 		<dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
-            <version>1.6.4</version>
+            <version>1.6.5</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -229,8 +229,19 @@
 			<version>2.0.9</version>
             <scope>test</scope>
         </dependency>
-		
-		
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito-common</artifactId>
+			<version>1.6.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>1.5.1</version>
+			<scope>test</scope>
+		</dependency>
+
+
 		<!-- For interactive testing via hpi:run -->
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
