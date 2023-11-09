@@ -221,8 +221,14 @@
 			<version>1.6.5</version>
             <scope>test</scope>
         </dependency>
-		
-		
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>5.7.0</version>
+			<scope>test</scope>
+		</dependency>
+
+
 		<!-- For interactive testing via hpi:run -->
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
