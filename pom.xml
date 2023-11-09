@@ -49,7 +49,7 @@
 
 	<scm>
 		<connection>scm:git:https://github.com/jenkinsci/multibranch-scan-webhook-trigger.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/multibranch-scan-webhook-trigger.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:jenkinsci/multibranch-scan-webhook-trigger.git</developerConnection>
 		<url>https://github.com/jenkinsci/multibranch-scan-webhook-trigger.git</url>
 		<tag>HEAD</tag>
 	</scm>
