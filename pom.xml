@@ -3,17 +3,17 @@
 	<parent>
 		<groupId>org.jenkins-ci.plugins</groupId>
 		<artifactId>plugin</artifactId>
-		<version>4.18</version>
+		<version>4.75</version>
+		<relativePath/>
 	</parent>
 
 	<properties>
-		<java.level>8</java.level>
 		<!-- <slf4jVersion>1.7.30</slf4jVersion> -->
 		<findbugs.failOnError>false</findbugs.failOnError>
 		<!--  jenkins.version>2.222.4</jenkins.version>-->
-		<jenkins.version>2.263.1</jenkins.version>
-        <scm-api.version>2.6.4</scm-api.version>
-        <git-plugin.version>4.5.2</git-plugin.version>
+		<jenkins.version>2.387.3</jenkins.version>
+		<scm-api.version>2.6.4</scm-api.version>
+		<git-plugin.version>4.5.2</git-plugin.version>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<violations.version>1.18</violations.version>
 	</properties>
@@ -35,28 +35,37 @@
 		</license>
 	</licenses>
 	<developers>
-        <developer>
-            <id>igalg</id>
-            <name>Igal Gluh</name>
-            <email>igal.gluh@gmail.com</email>
-        </developer>
-    </developers>
+		<developer>
+			<id>igalg</id>
+			<name>Igal Gluh</name>
+			<email>igal.gluh@gmail.com</email>
+		</developer>
+	</developers>
 
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/jenkinsci/multibranch-scan-webhook-trigger</url>
 	</issueManagement>
 
-	
-
 
 
 	<scm>
-        <connection>scm:git:ssh://git@github.com/jenkinsci/multibranch-scan-webhook-trigger.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/multibranch-scan-webhook-trigger.git</developerConnection>
-        <url>https://github.com/jenkinsci/multibranch-scan-webhook-trigger.git</url>
-    <tag>HEAD</tag>
-  </scm>
+		<connection>scm:git:ssh://git@github.com/jenkinsci/multibranch-scan-webhook-trigger.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/multibranch-scan-webhook-trigger.git</developerConnection>
+		<url>https://github.com/jenkinsci/multibranch-scan-webhook-trigger.git</url>
+		<tag>HEAD</tag>
+	</scm>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.jenkins.tools.bom</groupId>
+				<artifactId>bom-2.387.x</artifactId>
+				<version>2543.vfb_1a_5fb_9496d</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<repositories>
 		<repository>
@@ -121,50 +130,48 @@
 
 	<dependencies>
 		<dependency>
-            <groupId>org.kohsuke</groupId>
-            <artifactId>access-modifier-annotation</artifactId>
-             <!-- <version>1.11</version> -->
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci</groupId>
-            <artifactId>annotation-indexer</artifactId>
-             <!-- <version>1.12</version> -->
-        </dependency>
-        <!-- <dependency>
+			<groupId>org.kohsuke</groupId>
+			<artifactId>access-modifier-annotation</artifactId>
+			<!-- <version>1.11</version> -->
+		</dependency>
+		<dependency>
+			<groupId>org.jenkins-ci</groupId>
+			<artifactId>annotation-indexer</artifactId>
+			<!-- <version>1.12</version> -->
+		</dependency>
+		<!-- <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>junit</artifactId>
             <version>1.50</version>
         </dependency> -->
 		
 		
-		 <!-- plugin dependencies -->
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>scm-api</artifactId>
-            <version>${scm-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>github-api</artifactId>
-            <version>1.116</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>git</artifactId>
-            <version>${git-plugin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>branch-api</artifactId>
-            <version>2.5.9</version>
-        </dependency>
-        <!-- /plugin dependencies -->
-		
-		
-		
-		
-		
-		
+		<!-- plugin dependencies -->
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>scm-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>github-api</artifactId>
+			<version>1.116</version>
+			<exclusions>
+				<exclusion>
+					<!-- brought in by io.jenkins.plugins:commons-lang3-api -->
+					<groupId>org.apache.commons</groupId>
+					<artifactId>commons-lang3</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>git</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jenkins-ci.plugins</groupId>
+			<artifactId>branch-api</artifactId>
+		</dependency>
+		<!-- /plugin dependencies -->
 		
 		
 		
@@ -174,6 +181,11 @@
 			<version>2.4.0</version>
 		</dependency>
 		<dependency>
+			<groupId>io.jenkins.plugins</groupId>
+			<artifactId>commons-lang3-api</artifactId>
+			<version>3.12.0-36.vd97de6465d5b_</version>
+		</dependency>
+		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.8.2</version>
@@ -181,12 +193,10 @@
 		<dependency>
 			<groupId>org.jenkins-ci.plugins</groupId>
 			<artifactId>structs</artifactId>
-			<version>1.22</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jenkins-ci.plugins</groupId>
 			<artifactId>credentials</artifactId>
-			<version>2.3.19</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.jenkins-ci.plugins</groupId>
@@ -213,25 +223,17 @@
              <!-- <version>1.6.4</version> -->
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
-            <!-- <version>1.6.4</version> -->
-            <scope>test</scope>
-        </dependency>
 		
 		
 		<!-- For interactive testing via hpi:run -->
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-job</artifactId>
-            <version>2.41</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-cps</artifactId>
-            <version>2.92</version>
             <scope>test</scope>
         </dependency>
         
@@ -240,32 +242,27 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-step-api</artifactId>
-            <version>2.23</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>token-macro</artifactId>
-            <version>2.13</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>plain-credentials</artifactId>
-            <version>1.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>script-security</artifactId>
-            <version>1.77</version>
             <scope>test</scope>
         </dependency>
        
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-scm-step</artifactId>
-            <version>2.13</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -283,7 +280,6 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>matrix-project</artifactId>
-            <version>1.18</version>
             <scope>test</scope>
         </dependency>
         
@@ -293,12 +289,6 @@
             <version>1.4</version>
             <scope>test</scope>
         </dependency> -->
-		
-		
-		
-		
-		
-		
 		
 		
 		
