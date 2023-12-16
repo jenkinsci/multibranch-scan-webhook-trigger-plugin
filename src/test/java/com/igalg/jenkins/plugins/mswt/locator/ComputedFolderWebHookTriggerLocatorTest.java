@@ -35,10 +35,9 @@ import java.util.Map;
 import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.Mockito;
 
 import com.cloudbees.hudson.plugins.folder.computed.ComputedFolder;
 import com.igalg.jenkins.plugins.mswt.trigger.ComputedFolderWebHookTrigger;
@@ -47,8 +46,6 @@ import hudson.triggers.Trigger;
 import hudson.triggers.TriggerDescriptor;
 
 @SuppressWarnings("rawtypes")
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({WorkflowMultiBranchProject.class})
 public class ComputedFolderWebHookTriggerLocatorTest {
 	  
 	private List<ComputedFolder> computedFolderList;
@@ -71,6 +68,14 @@ public class ComputedFolderWebHookTriggerLocatorTest {
 			}
 		};
 	  }
+
+  @BeforeEach
+  void setUpStaticMocks() {
+  }
+
+  @AfterEach
+  void tearDownStaticMocks() {
+  }
 
 	  @Test
 	  public void testThatJobsWithMatchedTokenFoundedAndNotMatchNotFounded() {
@@ -95,14 +100,14 @@ public class ComputedFolderWebHookTriggerLocatorTest {
 	  
 	  
 	  private WorkflowMultiBranchProject createJobWorkflowMultiBranchProjectWithouTrigger() {
-			WorkflowMultiBranchProject mock = PowerMockito.mock(WorkflowMultiBranchProject.class);
-			PowerMockito.when(mock.getFullName())
+			WorkflowMultiBranchProject mock = Mockito.mock(WorkflowMultiBranchProject.class);
+			Mockito.when(mock.getFullName())
 	    	.thenReturn("WorkflowMultiBranchProject_noTrigger");
 		    return mock;
 		}  
 	private WorkflowMultiBranchProject createJobWorkflowMultiBranchProject(String token) {
-		WorkflowMultiBranchProject mock = PowerMockito.mock(WorkflowMultiBranchProject.class);
-		PowerMockito.when(mock.getFullName()).thenReturn("WorkflowMultiBranchProject_" + token);
+		WorkflowMultiBranchProject mock = Mockito.mock(WorkflowMultiBranchProject.class);
+		Mockito.when(mock.getFullName()).thenReturn("WorkflowMultiBranchProject_" + token);
 	     Map<TriggerDescriptor, Trigger<?>> triggers = new HashMap<>();
 	     TriggerDescriptor typeDescr = mock(TriggerDescriptor.class);
 	     ComputedFolderWebHookTrigger trigger = new ComputedFolderWebHookTrigger(token);
