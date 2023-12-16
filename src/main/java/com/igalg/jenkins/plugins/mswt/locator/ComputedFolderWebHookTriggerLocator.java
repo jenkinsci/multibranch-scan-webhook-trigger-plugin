@@ -23,6 +23,9 @@
  */
 package com.igalg.jenkins.plugins.mswt.locator;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +43,8 @@ public class ComputedFolderWebHookTriggerLocator {
 			List<ComputedFolder> candidateProjects  =  jobLocator.getAllComputedFolders();
 		    for (ComputedFolder<?> candidateJob : candidateProjects) {
 		        ComputedFolderWebHookTrigger computedFolderWebHookTrigger = findComputedFolderWebHookTrigger(candidateJob.getTriggers());
-		        if (computedFolderWebHookTrigger != null &&  computedFolderWebHookTrigger.getToken().equals(givenToken)) {
+		        if (computedFolderWebHookTrigger != null &&
+		        		MessageDigest.isEqual(computedFolderWebHookTrigger.getToken().getBytes(UTF_8), givenToken.getBytes(UTF_8))) {
 		        	locatedList.add(new LocatedComputedFolder(candidateJob.getFullName(), computedFolderWebHookTrigger));
 		        }
 		
